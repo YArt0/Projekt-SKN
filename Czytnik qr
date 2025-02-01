@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generowanie Kodów QR</title>
+  <!-- Link do zewnętrznej biblioteki QRCode.js -->
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <!-- Link do Web Speech API dla odczytu na głos -->
+  <script>
+    // Funkcja do odczytu tekstu na głos
+    function readAloud(text) {
+      const speech = new SpeechSynthesisUtterance(text);
+      speech.lang = 'pl-PL'; // Ustawiamy język polski
+      speechSynthesis.speak(speech);
+    }
+  </script>
+</head>
+<body>
+  <h1>Generowanie Kodu QR</h1>
+  <p>Po zeskanowaniu kodu QR, plik zostanie odczytany na głos.</p>
+
+  <!-- Miejsce do wyświetlenia kodu QR -->
+  <div id="qrcode"></div>
+
+  <script>
+    // Generowanie QR Code
+    const fileUrl = "nazwa_pliku.txt"; // Zmienna do linku do pliku, który ma być przeczytany
+    const qrCodeContainer = document.getElementById("qrcode");
+    const qr = new QRCode(qrCodeContainer, {
+      text: window.location.href + fileUrl, // URL strony + plik
+      width: 128,
+      height: 128,
+    });
+  </script>
+
+  <!-- Link do pliku -->
+  <a href="nazwa_pliku.txt" onclick="readAloud('Treść pliku: ' + this.href)">Otwórz plik</a>
+  
+</body>
+</html>
