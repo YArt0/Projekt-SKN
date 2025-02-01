@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generowanie Kodów QR</title>
-  <!-- Link do zewnętrznej biblioteki QRCode.js -->
-  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-  <!-- Link do Web Speech API dla odczytu na głos -->
+  <title>INSTRUKCJA BHP</title>
+
+  <!-- Link do biblioteki PDF.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+  
   <script>
     // Funkcja do odczytu tekstu na głos
     function readAloud(text) {
@@ -15,28 +16,48 @@
       speechSynthesis.speak(speech);
     }
 
-    window.onload = function() {
-      const fileUrl = "INSTUKCJA%20BHP%20DLA%20PRACOWNIKÓW%20FERMY%20BYDŁA%20AAA.pdf"; // Zmienna do linku do pliku PDF
-      const qrCodeContainer = document.getElementById("qrcode");
+    // Funkcja do odczytu zawartości PDF
+    function readPDFContent(pdfUrl) {
+      const loadingTask = pdfjsLib.getDocument(pdfUrl); // Wczytanie PDF
+      loadingTask.promise.then(function(pdf) {
+        let allText = ''; // Zmienna do przechowania całego tekstu z PDF
+        const totalPages = pdf.numPages;
 
-      // Generowanie QR Code
-      const qr = new QRCode(qrCodeContainer, {
-        text: window.location.href + fileUrl, // URL strony + plik PDF
-        width: 128,
-        height: 128,
+        // Odczytanie każdej strony z PDF
+        for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
+          pdf.getPage(pageNum).then(function(page) {
+            page.getTextContent().then(function(textContent) {
+              const textItems = textContent.items;
+              let pageText = '';
+              
+              // Zbieranie tekstu z elementów strony
+              for (let i = 0; i < textItems.length; i++) {
+                pageText += textItems[i].str + ' ';
+              }
+
+              allText += pageText;
+
+              // Jeśli wszystkie strony zostały odczytane, odczytujemy tekst na głos
+              if (pageNum === totalPages) {
+                readAloud('Odczytuję Instrukcję BHP: ' + allText);
+              }
+            });
+          });
+        }
+      }, function(error) {
+        console.error('Błąd podczas ładowania pliku PDF: ' + error);
       });
+    }
+
+    window.onload = function() {
+      // Wczytanie pliku PDF
+      const pdfUrl = 'INSTRUKCJA_BHP.pdf'; // Link do pliku PDF
+      readPDFContent(pdfUrl); // Odczytanie pliku PDF
     }
   </script>
 </head>
 <body>
-  <h1>Generowanie Kodu QR</h1>
-  <p>Po zeskanowaniu kodu QR, plik PDF zostanie otwarty.</p>
-
-  <!-- Miejsce do wyświetlenia kodu QR -->
-  <div id="qrcode"></div>
-
-  <!-- Link do pliku PDF -->
-  <a href="INSTUKCJA%20BHP%20DLA%20PRACOWNIKÓW%20FERMY%20BYDŁA%20AAA.pdf" target="_blank" onclick="readAloud('Otwieram plik PDF: INSTUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA AAA.')">Otwórz plik PDF</a>
-  
+  <h1>Witaj YArt0! Oto Twoja INSTRUKCJA BHP</h1>
+  <p>Po załadowaniu, dokument PDF zostanie przeczytany na głos.</p>
 </body>
 </html>
