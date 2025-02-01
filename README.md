@@ -1,6 +1,7 @@
-# Projekt-SKN
+# Projekt Studenckie koła naukowe tworzą innowacje "Monitorowanie zagrożeń w środowisku pracy hodowcy w świetle przepisów bhp oraz ochrony środowiska"
 ![image](https://github.com/user-attachments/assets/a88be580-f795-4036-bb75-585ef67f80f9)
 ![image](https://github.com/user-attachments/assets/086eb259-91e3-4910-980c-1d8e234bd985)
+![image](https://github.com/user-attachments/assets/5f16d2da-52ae-4428-a364-0fa4b8a321d0)
 
 
 INSTRUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA 
