@@ -14,28 +14,29 @@
       speech.lang = 'pl-PL'; // Ustawiamy język polski
       speechSynthesis.speak(speech);
     }
+
+    window.onload = function() {
+      const fileUrl = "INSTUKCJA%20BHP%20DLA%20PRACOWNIKÓW%20FERMY%20BYDŁA%20AAA.pdf"; // Zmienna do linku do pliku PDF
+      const qrCodeContainer = document.getElementById("qrcode");
+
+      // Generowanie QR Code
+      const qr = new QRCode(qrCodeContainer, {
+        text: window.location.href + fileUrl, // URL strony + plik PDF
+        width: 128,
+        height: 128,
+      });
+    }
   </script>
 </head>
 <body>
   <h1>Generowanie Kodu QR</h1>
-  <p>Po zeskanowaniu kodu QR, plik zostanie odczytany na głos.</p>
+  <p>Po zeskanowaniu kodu QR, plik PDF zostanie otwarty.</p>
 
   <!-- Miejsce do wyświetlenia kodu QR -->
   <div id="qrcode"></div>
 
-  <script>
-    // Generowanie QR Code
-    const fileUrl = "INSTUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA AAA.pdf"; // Zmienna do linku do pliku, który ma być przeczytany
-    const qrCodeContainer = document.getElementById("qrcode");
-    const qr = new QRCode(qrCodeContainer, {
-      text: window.location.href + fileUrl, // URL strony + plik
-      width: 128,
-      height: 128,
-    });
-  </script>
-
-  <!-- Link do pliku -->
-  <a href="nazwa_pliku.txt" onclick="readAloud('Treść pliku: ' + this.href)">Otwórz plik</a>
+  <!-- Link do pliku PDF -->
+  <a href="INSTUKCJA%20BHP%20DLA%20PRACOWNIKÓW%20FERMY%20BYDŁA%20AAA.pdf" target="_blank" onclick="readAloud('Otwieram plik PDF: INSTUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA AAA.')">Otwórz plik PDF</a>
   
 </body>
 </html>
