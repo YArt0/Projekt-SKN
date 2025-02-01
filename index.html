@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odczyt README</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <h1>Odczyt README</h1>
-    <p id="content">Ładowanie treści...</p>
+    <div id="content">Ładowanie treści...</div>
 
     <script>
         // Pobierz README.md z repozytorium
         fetch('README.md')
             .then(response => response.text())
             .then(text => {
-                document.getElementById('content').innerText = text;
-                speakText(text); // Automatycznie odczytaj po załadowaniu
+                document.getElementById('content').innerHTML = marked.parse(text);
+                speakText(text); // Automatyczne odczytanie po załadowaniu
             });
 
         // Funkcja do odczytywania tekstu
