@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odczyt README</title>
+</head>
+<body>
+    <h1>Odczyt README</h1>
+    <button onclick="speakText()">Czytaj na głos</button>
+    <p id="content">Ładowanie treści...</p>
+
+    <script>
+        // Pobierz README.md z repozytorium
+        fetch('README.md')
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('content').innerText = text;
+            });
+
+        // Funkcja do odczytywania tekstu
+        function speakText() {
+            let text = document.getElementById('content').innerText;
+            let speech = new SpeechSynthesisUtterance(text);
+            speech.lang = "pl-PL"; // Ustaw język na polski
+            speechSynthesis.speak(speech);
+        }
+    </script>
+</body>
+</html>
