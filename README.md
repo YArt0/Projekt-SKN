@@ -1,4 +1,6 @@
 # Projekt-SKN
+![image](https://github.com/user-attachments/assets/a88be580-f795-4036-bb75-585ef67f80f9)
+![image](https://github.com/user-attachments/assets/086eb259-91e3-4910-980c-1d8e234bd985)
 
 
 INSTRUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA 
