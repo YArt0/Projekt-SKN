@@ -1,6 +1,6 @@
 # Projekt Studenckie koła naukowe tworzą innowacje "Monitorowanie zagrożeń w środowisku pracy hodowcy w świetle przepisów bhp oraz ochrony środowiska"
-![image](https://github.com/user-attachments/assets/a88be580-f795-4036-bb75-585ef67f80f9)
-![image](https://github.com/user-attachments/assets/086eb259-91e3-4910-980c-1d8e234bd985)
+![image](https://github.com/user-attachments/assets/98976758-123d-4b67-9c0f-9f7f4b73cbf5)
+![image](https://github.com/user-attachments/assets/352a76a8-75fd-40b0-976c-43ad8be8ff4c)
 ![image](https://github.com/user-attachments/assets/5f16d2da-52ae-4428-a364-0fa4b8a321d0)
 
 
