@@ -25,7 +25,7 @@
 
   <script>
     // Generowanie QR Code
-    const fileUrl = "nazwa_pliku.txt"; // Zmienna do linku do pliku, który ma być przeczytany
+    const fileUrl = "INSTUKCJA BHP DLA PRACOWNIKÓW FERMY BYDŁA AAA.pdf"; // Zmienna do linku do pliku, który ma być przeczytany
     const qrCodeContainer = document.getElementById("qrcode");
     const qr = new QRCode(qrCodeContainer, {
       text: window.location.href + fileUrl, // URL strony + plik
