@@ -7,7 +7,6 @@
 </head>
 <body>
     <h1>Odczyt README</h1>
-    <button onclick="speakText()">Czytaj na głos</button>
     <p id="content">Ładowanie treści...</p>
 
     <script>
@@ -16,15 +15,23 @@
             .then(response => response.text())
             .then(text => {
                 document.getElementById('content').innerText = text;
+                speakText(text); // Automatycznie odczytaj po załadowaniu
             });
 
         // Funkcja do odczytywania tekstu
-        function speakText() {
-            let text = document.getElementById('content').innerText;
+        function speakText(text) {
             let speech = new SpeechSynthesisUtterance(text);
             speech.lang = "pl-PL"; // Ustaw język na polski
+            speech.rate = 1.0; // Normalna prędkość
             speechSynthesis.speak(speech);
         }
+
+        // Obejście dla niektórych przeglądarek – pierwsza interakcja uruchomi głos
+        document.addEventListener("click", () => {
+            if (!speechSynthesis.speaking) {
+                speakText(document.getElementById('content').innerText);
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
